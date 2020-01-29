@@ -1,7 +1,7 @@
 #define o_pin 10
 void setup() {
   // put your setup code here, to run once:
-  pinMode(o_pin, OUTPUT)
+  pinMode(o_pin, OUTPUT);
 }
 
 void loop() {
