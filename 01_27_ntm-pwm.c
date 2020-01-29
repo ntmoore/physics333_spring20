@@ -32,11 +32,12 @@ void ntm_pwm(int duration, int power, int PWM_period, int output_pin) {
 
   while ((millis() - time_0) < duration ) {
     digitalWrite(output_pin, HIGH);
-    //what goes here?
-    delayMicroseconds();
+    //time the outputbit is high
+    delayMicroseconds(power*PWM_period);
+    
     digitalWrite(output_pin, LOW);
-    // what goes here?
-    delayMicroseconds();
+    // time the output bit is low
+    delayMicroseconds((1000-power)*PWM_period);
   }
   return;
 }
