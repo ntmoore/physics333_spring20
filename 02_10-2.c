@@ -1,3 +1,4 @@
+// What will this produce?
 void setup() {
   Serial.begin(9600);
   int i;
