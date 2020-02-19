@@ -23,3 +23,6 @@ You can also pass data back from a function via the pass-by-reference mechanism.
 This program plays music, sort-of.  Instead of pulsing out sine-wave based tones, the output pin is written high-low at a frequency that corresponds to a given musical note.  You could say some complicated things about how a square wave is composed of a Fourier series of harmonics, but for now it's enough to note that the music sounds pretty harsh. 
 The code uses a lookup function to map notes, eg A4, to periods.  This is done with the character comparison function strcmp(), which returns 0 if the two arguments are equal.
 The next step would be to feed the code a string of notes and durations (ie, a song), but what would be the best data structure to use?  
+<h3>02_19-music-player-2.c and 02_19-play-mario-song.c</h3>
+
+These two programs show how you might play a song via a square wave approximation to a sine-wave tone.  Frequencies (us periods) are mapped from piano key number.  The codes play a chromatic scale and also the fires few measures of the Super Mario Brothers theme.  
