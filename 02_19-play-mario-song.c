@@ -5,9 +5,9 @@ void setup() {
 }
 
 void loop() {
-  // playing the "Mario" theme
+  // playing the "Mario" theme, https://en.wikipedia.org/wiki/Super_Mario_Bros._theme
   // piano keys (by int), could also be notes[33]
-  int notes[33] = {56 ,          56  ,           56  ,           0 ,
+  int notes[] = {56 ,          56  ,           56  ,           0 ,
                  52  ,           56  ,           59  ,           47  ,
                  52  ,           0 ,           47  ,           0 ,
                  44  ,           0 ,           49  ,           0 ,
@@ -34,9 +34,10 @@ void loop() {
   int i;
   // @  120bpm, there are 2b per second or 32x16th notes per second
   // 1/32 ~= 31ms, so
-  int ms_per_16th = 31;
+  int ms_per_16th = 4*31;  // something is messed up with the tempo, sounds better at 4x slower
   for (i = 0; i < 33; i++) {
     play_note(ms_per_16th * duration[i], get_period(notes[i]), 10);
+    delay(50); // things sound better when you throw a 50ms delay in between notes.
   }
 
   Serial.println("\n\n");
