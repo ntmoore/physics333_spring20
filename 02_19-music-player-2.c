@@ -1,48 +1,20 @@
 // this is the start of a music player
+#define outpin 8
+
 void setup() {
-  Serial.begin(9600);
-  pinMode(10, OUTPUT);
-  char a[3] = "a4";
-  Serial.println(a);
-  Serial.println(get_period(a));
+  pinMode(outpin, OUTPUT);
 }
 
 void loop() {
-  // playing the "Mario" theme
-  // piano keys (by int), could also be notes[33]
-  int notes[33] = {56 ,          56  ,           56  ,           0 ,
-                 52  ,           56  ,           59  ,           47  ,
-                 52  ,           0 ,           47  ,           0 ,
-                 44  ,           0 ,           49  ,           0 ,
-                 51  ,           0 ,           50  ,           49  ,
-                 47  ,           56  ,           59  ,           61  ,
-                 57  ,           59  ,           0 ,           56  ,
-                 0 ,           52  ,           54  ,           51  ,
-                 0
-                };
-  // note duration, in 16th notes
-  int duration[] = {1 , 2 , 1 , 1 ,
-                    1 , 2 , 4 , 4 ,
-                    2 , 1 , 1 , 2 ,
-                    2 , 1 , 1 , 1 ,
-                    1 , 1 , 1 , 2 ,
-                    2 , 2 , 2 , 2 ,
-                    1 , 1 , 1 , 1 ,
-                    1 , 1 , 1 , 1 ,
-                    2
-                   };
-  Serial.println(sizeof(duration));
-  Serial.println(sizeof(duration[0]));
-  Serial.println(sizeof(duration) / sizeof(duration[0]));
   int i;
-  // @  120bpm, there are 2b per second or 32x16th notes per second
-  // 1/32 ~= 31ms, so
-  int ms_per_16th = 31;
-  for (i = 0; i < 33; i++) {
-    play_note(ms_per_16th * duration[i], get_period(notes[i]), 10);
+  for (i = 35; i < 45; i++) {
+    play_note(200, get_period(i), outpin);
   }
 
-  Serial.println("\n\n");
+  for (i = 45; i <= 35; i--) {
+    play_note(200, get_period(i), outpin);
+  }
+
   delay(2000);
 }
 
