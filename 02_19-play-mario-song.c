@@ -2,9 +2,6 @@
 void setup() {
   Serial.begin(9600);
   pinMode(10, OUTPUT);
-  char a[3] = "a4";
-  Serial.println(a);
-  Serial.println(get_period(a));
 }
 
 void loop() {
