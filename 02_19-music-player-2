@@ -50,6 +50,7 @@ int get_period(int note) {
       Middle C is 40
      using the convention that note 0 is a rest.
      indicated with negative period
+     working from reference: https://en.wikipedia.org/wiki/Piano_key_frequencies
   */
   if (note == 0) {
     Tus = -1;
