@@ -11,7 +11,7 @@ void loop() {
   // Documentation https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/
   t2=millis();
   dt=(t2-t1)/2;
-  t_mid=(t2-t1)/2;
+  t_mid=(t2+t1)/2;
 
   Serial.print(t_mid);
   Serial.print(",");
