@@ -26,3 +26,19 @@ The next step would be to feed the code a string of notes and durations (ie, a s
 <h3>02_19-music-player-2.c and 02_19-play-mario-song.c</h3>
 
 These two programs show how you might play a song via a square wave approximation to a sine-wave tone.  Frequencies (us periods) are mapped from piano key number.  The codes play a chromatic scale and also the fires few measures of the Super Mario Brothers theme.  
+
+
+<h3> 02_24_analogread_fill_an_array.c and 02_24_analogread_w_uncertainty.c </h3>
+These examples intoduce analog voltage readings. Different measurements of uncertainty are provided.
+
+<h3>02_24-100pwm.c and 02_24_quiz_p3-4.c</h3>
+These are 1 out of 100 pwm implementations with warnings enabeled via #define preprocessor statements.
+
+<h3>02_26-long_vs_int_types.c</h3>
+This example shows several ways to compare int and long integer data types.  divide and modulo are both overloaded with respect to being fed int or long values.
+
+<h3>02_26_float_precision.c</h3>
+How are float and double precision variables stored and displayed on an arduino?
+
+<h3>02_26_float_on_linux.c</h3>
+In Linux (and other "normal") computer systems, double has twice the precision of float in representing floating point numbers.  This example is written in C and will run on a linux computer (but probably not an Arduino).
