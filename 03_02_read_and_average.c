@@ -16,6 +16,8 @@ void loop() {
   num_reads = 0;
   while ((millis() - t0) < read_time_ms) {
     xvals[num_reads] = analogRead(analog_pin);
+    Serial.print(xvals[num_reads]);
+    Serial.print(",");
     num_reads++;  // note this is an array and loop index
   }
 
@@ -27,6 +29,8 @@ void loop() {
   Serial.print("avg = ");
   float avg_x = x_sum / (float)num_reads;
   Serial.println(avg_x);
-
+  Serial.print("num_reads = ");
+  Serial.print(num_reads);
+  
   // print out results
 }
