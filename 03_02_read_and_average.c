@@ -1,5 +1,9 @@
-int read_time_ms;
-int num_reads;
+#define analog_pin 0
+#define FrickinHUGE 300
+int read_time_ms = 12;
+int i,num_reads;
+int xvals[FrickinHUGE];
+unsigned long t0;
 float x_sum, x_square_sum;
 
 void setup() {
@@ -8,8 +12,21 @@ void setup() {
 
 void loop() {
   // read as much as possible within a set time interval (read_time_ms)
-  
-  // compute average and uncertainty of the read during this interval
-  
+  t0 = millis();
+  num_reads = 0;
+  while ((millis() - t0) < read_time_ms) {
+    xvals[num_reads] = analogRead(analog_pin);
+    num_reads++;  // note this is an array and loop index
+  }
+
+  // compute average and uncertainty of the values read during this interval
+  x_sum = 0;
+  for (i = 0; i < num_reads; i++) {
+    x_sum += xvals[i];
+  }
+  Serial.print("avg = ");
+  float avg_x = x_sum / (float)num_reads;
+  Serial.println(avg_x);
+
   // print out results
 }
