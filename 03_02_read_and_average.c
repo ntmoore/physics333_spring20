@@ -1,7 +1,7 @@
 #define analog_pin 0
 #define FrickinHUGE 300
 int read_time_ms = 12;
-int i,num_reads;
+int i, num_reads;
 int xvals[FrickinHUGE];
 unsigned long t0;
 float x_sum, x_square_sum;
@@ -16,8 +16,6 @@ void loop() {
   num_reads = 0;
   while ((millis() - t0) < read_time_ms) {
     xvals[num_reads] = analogRead(analog_pin);
-    Serial.print(xvals[num_reads]);
-    Serial.print(",");
     num_reads++;  // note this is an array and loop index
   }
 
@@ -25,12 +23,15 @@ void loop() {
   x_sum = 0;
   for (i = 0; i < num_reads; i++) {
     x_sum += xvals[i];
+    Serial.print(xvals[i]);
+    Serial.print(",");
   }
+  Serial.println();
   Serial.print("avg = ");
   float avg_x = x_sum / (float)num_reads;
   Serial.println(avg_x);
   Serial.print("num_reads = ");
-  Serial.print(num_reads);
-  
+  Serial.println(num_reads);
+
   // print out results
 }
