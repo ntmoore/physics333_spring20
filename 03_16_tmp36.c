@@ -15,11 +15,11 @@ void loop() {
   t1 = millis() - t0;
 
   // convert, 10bit 1024 state ADC
-  voltage = 5*reading/1023;
+  voltage = 5.0*reading/1023.0;
   // using spec sheet conversion of
   // 10mV/C and intercept of-50C at 0V
   // https://www.analog.com/media/en/technical-documentation/data-sheets/TMP35_36_37.pdf
-  temp = voltage*(1/0.01)-50;
+  temp = voltage*(1/0.01)-50.0;
   
   Serial.print(t1); Serial.print(",");
   Serial.print(reading); Serial.print(",");
