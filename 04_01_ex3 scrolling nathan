@@ -1,0 +1,40 @@
+/* building off the system liquid crystal library */
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+// added per sparkfun tutorial at
+// https://learn.sparkfun.com/tutorials/basic-character-lcd-hookup-guide
+const int rs = 13, en = 12, d4 = 11, d5 = 10, d6 = 9, d7 = 8;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  lcd.print("in setup");
+  for (int i = 0; i < 20; i++) {
+    lcd.print(".");
+    delay(500);
+  }
+  // challenge, how can we modify this so that the dots, .... carry over to the second row?
+}
+
+void loop() {
+  //lcd.setCursor(column, row);
+  // note from the arduino library, https://www.arduino.cc/en/Tutorial/LiquidCrystalSetCursor
+  //  lcd.setCursor(0, 0); // top left
+  //  lcd.setCursor(15, 0); // top right
+  //  lcd.setCursor(0, 1); // bottom left
+  //  lcd.setCursor(15, 1); // bottom right
+
+  lcd.setCursor(5, 0);
+  lcd.clear();
+  lcd.print("Nathan");
+  delay(750);
+  for (int i = 0; i < 16; i++) {
+    lcd.setCursor(i, 0);
+    lcd.print("  Nathan");
+    delay(750);
+  }
+
+}
