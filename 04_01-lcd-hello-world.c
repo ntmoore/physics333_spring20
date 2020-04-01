@@ -45,7 +45,9 @@
 
 // initialize the library by associating any needed LCD interface pin
 // with the arduino pin number it is connected to
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+// added per sparkfun tutorial at 
+// https://learn.sparkfun.com/tutorials/basic-character-lcd-hookup-guide
+const int rs = 13, en = 12, d4 = 11, d5 = 10, d6 = 9, d7 = 8;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 void setup() {
