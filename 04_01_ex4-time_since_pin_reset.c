@@ -23,11 +23,11 @@ void setup() {
 void loop() {
   // write time in the second row
   //lcd.setCursor(column, row);
-  if (digitalRead(3)==1) {
+  if (digitalRead(3)==HIGH) {
     t0 = millis();
     lcd.setCursor(0, 1);
-    lcd.print(0);
-  } else {
+    lcd.print("0               ");
+  } else { // ie, digital 3 is LOW
     lcd.setCursor(0, 1);
     lcd.print(millis() - t0);
     delay(random(100, 900));
