@@ -9,11 +9,9 @@
   Jim Lindblom @ SparkFun Electronics
   Original Creation Date: April 30, 2015
   https://github.com/sparkfun/LSM9DS1_Breakout
-
   The LSM9DS1 is a versatile 9DOF sensor. It has a built-in
   accelerometer, gyroscope, and magnetometer. Very cool! Plus it
   functions over either SPI or I2C.
-
   This Arduino sketch is a demo of the simple side of the
   SFE_LSM9DS1 library. It'll demo the following:
   How to create a LSM9DS1 object, using a constructor (global
@@ -27,7 +25,6 @@
   and calcMag() functions.
   How to use the data from the LSM9DS1 to calculate
   orientation and heading.
-
   Hardware setup: This library supports communicating with the
   LSM9DS1 over either I2C or SPI. This example demonstrates how
   to use I2C. The pin-out is as follows:
@@ -38,21 +35,17 @@
   GND ------------- GND
   (CSG, CSXM, SDOG, and SDOXM should all be pulled high.
   Jumpers on the breakout board will do this for you.)
-
   The LSM9DS1 has a maximum voltage of 3.6V. Make sure you power it
   off the 3.3V rail! I2C pins are open-drain, so you'll be
   (mostly) safe connecting the LSM9DS1's SCL and SDA pins
   directly to the Arduino.
-
   Development environment specifics:
   IDE: Arduino 1.6.3
   Hardware Platform: SparkFun Redboard
   LSM9DS1 Breakout Version: 1.0
-
   This code is beerware. If you see me (or any other SparkFun
   employee) at the local, and you've found our code helpful,
   please buy us a round!
-
   Distributed as-is; no warranty is given.
 *****************************************************************/
 // The SFE_LSM9DS1 library requires both Wire and SPI be
@@ -109,29 +102,30 @@ void setup()
 
 void loop()
 {
-  if ( imu.accelAvailable() )
-  {
-    imu.readAccel();
-  }
-  if ( imu.magAvailable() )
-  {
-    imu.readMag();
-  }
-  Serial.print(millis());
-  Serial.println(",");
-  Serial.print(imu.calcAccel(imu.ax), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcAccel(imu.ay), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcAccel(imu.az), 2);
-  Serial.print(",,");
-  Serial.print(imu.calcMag(imu.mx), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcMag(imu.my), 2);
-  Serial.print(", ");
-  Serial.print(imu.calcMag(imu.mz), 2);
-  Serial.print(", ");
+  while (millis() < 20000) {
+    if ( imu.accelAvailable() )
+    {
+      imu.readAccel();
+    }
+    if ( imu.magAvailable() )
+    {
+      imu.readMag();
+    }
+    Serial.print(millis());
+    Serial.print(",");
+    Serial.print(imu.calcAccel(imu.ax), 2);
+    Serial.print(", ");
+    Serial.print(imu.calcAccel(imu.ay), 2);
+    Serial.print(", ");
+    Serial.print(imu.calcAccel(imu.az), 2);
+    Serial.print(",,");
+    Serial.print(imu.calcMag(imu.mx), 2);
+    Serial.print(", ");
+    Serial.print(imu.calcMag(imu.my), 2);
+    Serial.print(", ");
+    Serial.print(imu.calcMag(imu.mz), 2);
+    Serial.println(", ");
 
-  delay(1000);
+    delay(50);
+  }
 }
-
