@@ -85,8 +85,8 @@ while (dt_us < 0) {
   // echopin fell!
     t2=micros();
   }
+  dt_us = t2-t1;
   old_read = new_read;
 }
-dt_us = t2-t1;
 
 */
