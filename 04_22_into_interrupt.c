@@ -14,7 +14,8 @@
 #define N 20
 volatile long times[N];
 volatile int i = 0;
-
+volatile long time_of_last_interrupt_call=0;
+  
 // LED
 #define ledPin 13
 volatile byte ledstate = 0;
@@ -54,7 +55,10 @@ void loop() {
 
 // this is my interrupt service routine (ISR)
 void catch_change() {
-  times[i] = micros();
-  i++;
-  ledstate = !ledstate;
+  if (i < N && (micros()-time_of_last_interrupt_call)> 100000) {  
+    time_of_last_interrupt_call = micros();
+    times[i] = time_of_last_interrupt_call;
+    i++;
+    ledstate = !ledstate;
+  }
 }
