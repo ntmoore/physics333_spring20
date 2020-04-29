@@ -5,13 +5,14 @@
 const int rs = 13, en = 12, d4 = 11, d5 = 10, d6 = 9, d7 = 8;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
+float max_value = -1;
 
 Adafruit_Si7021 sensor = Adafruit_Si7021();
 
 void setup() {
   Serial.begin(115200);
   lcd.begin(16, 2);
-  int max_value = -1;
+  //  int max_value = -1;
 
   // wait for serial port to open
   while (!Serial) {
@@ -48,19 +49,18 @@ void setup() {
 
 void loop() {
 
-  int max_value;
+  // int max_value;
 
+  float new_temp = sensor.readTemperature() * 1.8 + 32;
 
-  int temp = sensor.readTemperature() * 1.8 + 32;
+  //int new_value = temp;
 
-  int new_value = temp;
-
-  if (new_value > max_value) {
-    max_value = new_value;
+  if (new_temp > max_value) {
+    max_value = new_temp;
   }
-  if (new_value < max_value) {
-    max_value = max_value;
-  }
+  //  if (new_value < max_value) {
+  //    max_value = max_value;
+  //  }
   Serial.print("max value: ");
   Serial.println(max_value);
   delay(5000);
